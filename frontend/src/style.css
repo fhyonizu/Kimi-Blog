@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+   核心修改区域：
+   1. 删掉了 cursor: none
+   2. 使用 url() 加载你的 GIF
+   3. 坐标 "64 64" 是 128x128 图片的中心点。
+      (如果你的图片是箭头形状，要把 64 64 改成 0 0)
+*/
+
+/* 默认状态：加载 default.gif */
+html, body {
+  cursor: url('/default.png') 16 16, auto !important;
+}
+
+/* 链接、按钮、点击态：加载 pointer.gif */
+a, button, input, textarea, select, .cursor-pointer, .group:hover {
+  cursor: url('/pointer.png') 16 16, pointer !important;
+}
+
+/* 下面保持你原来的样式不变 */
+body {
+  margin: 0;
+  background-image: url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=2068&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  color: #334155; 
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl rounded-2xl text-slate-800 transition-all duration-300;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-card:hover {
+  @apply bg-white/80 shadow-2xl;
+  transform: translateY(-2px);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
